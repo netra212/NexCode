@@ -1,0 +1,16 @@
+# Building a Coding Platforms. 
+
+--- Backend System ---
+1. userAuthentication
+    - Register
+    - Login
+    - Logout
+    - fetch user's github profile
+    - email-verified
+    - set password or reset-password
+    - forgot-password
+    - email-verfied-api
+    - google-signup
+2. Problems Creations. 
+3. Submit.
+4. DSA Problems. 
