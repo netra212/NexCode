@@ -1,0 +1,26 @@
+Schema
+-- User
+    - firstName
+    - lastName
+    - email
+    - role like admin or normal user
+    - password
+    - solvedProblem
+    - images
+
+-- Problems
+    - problem_id
+    - title
+    - run_testcases
+    - hidden testcases
+    - initial code + languages
+    - real solution
+    - run output testcases
+    - hidden output testcases
+    - videosolution
+
+- Submit
+    - usersolution
+    - problem_id
+    - solution | accept | reject
+
