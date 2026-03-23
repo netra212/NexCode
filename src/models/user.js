@@ -33,16 +33,12 @@ const userSchema = new Schema({
   },
   problemSolved: {
     type: [String],
+    timestamps: true,
   },
-  timestamps: true,
   password: {
     type: String,
     required: true,
   },
-  // email-verify
-  // reset-password
-  // forgot-password
-  // google-signup
 });
 
 const User = mongoose.model("user", userSchema);
