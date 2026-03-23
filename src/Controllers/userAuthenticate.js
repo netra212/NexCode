@@ -1,3 +1,4 @@
+const redisClient = require("../config/redis");
 const User = require("../models/user");
 const validate = require("../utils/validate");
 const bcrypt = require("bcrypt");
@@ -5,6 +6,7 @@ const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
   try {
+    console.log(req.body);
     // validate the data;
     validate(req.body);
 
@@ -46,7 +48,7 @@ const login = async (req, res) => {
     }
 
     const user = await User.findOne({ emailId });
-    const match = bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, user.password);
     if (!match) {
       throw new Error("Invalid Credentials");
     }
@@ -68,7 +70,19 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
   // Need to Invalid cookie while implementing Logout features.
   try {
+    // Validate the token via middleware.
+    const { token } = req.cookies;
+    // Now, Add token to the blocklis of redis.
+    const payload = jwt.decode(token);
+
+    await redisClient.set(`token: ${token}`, "Blocked");
+    await redisClient.expireAt(`token: ${token}`, payload.exp);
+
+    res.cookies("token", null, { expiresIn: new Date(Date.now()) });
+    res.send("Logout successfully.");
   } catch (err) {
-    res.send("Error: " + err);
+    res.status(503).send("Error: " + err.message);
   }
 };
+
+module.exports = { register, login, logout };
