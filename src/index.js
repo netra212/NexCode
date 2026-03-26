@@ -7,7 +7,6 @@ const authRouter = require("./routes/userAuth");
 const redisClient = require("./config/redis");
 
 // req.body ko data JSON format ma huncha so needs to into Javascript Object.
-
 app.use(express.json());
 app.use(cookieParser());
 
