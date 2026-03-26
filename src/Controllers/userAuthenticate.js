@@ -15,18 +15,20 @@ const register = async (req, res) => {
 
     // Hashing the password.
     req.body.password = await bcrypt.hash(password, 10);
+    req.body.role = "user";
 
     // Check if email is already exist.
     const user = await User.create(req.body);
 
     // Generating a token
     const token = jwt.sign(
-      { _id: user._id, emailId: emailId },
+      { _id: user._id, emailId: emailId, role: "user" },
       process.env.JWT_KEY,
       {
         expiresIn: 60 * 60,
       },
     );
+
     res.cookie("token", token, { maxAge: 60 * 60 * 1000 });
     res.status(201).send("User Registered Successfully.");
   } catch (err) {
@@ -54,7 +56,7 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { _id: user._id, emailId: emailId },
+      { _id: user._id, emailId: emailId, role: user.role },
       process.env.JWT_KEY,
       {
         expiresIn: 60 * 60,
@@ -85,4 +87,35 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { register, login, logout };
+const adminRegister = async (req, res) => {
+  try {
+    // validate the data;
+    validate(req.body);
+
+    // Fetching required data only.
+    const { firstName, emailId, password } = req.body;
+
+    // Hashing the password.
+    req.body.password = await bcrypt.hash(password, 10);
+    // req.body.role = "admin";
+
+    // Check if email is already exist.
+    const user = await User.create(req.body);
+
+    // Generating a token
+    const token = jwt.sign(
+      { _id: user._id, emailId: emailId, role: user.role },
+      process.env.JWT_KEY,
+      {
+        expiresIn: 60 * 60,
+      },
+    );
+
+    res.cookie("token", token, { maxAge: 60 * 60 * 1000 });
+    res.status(201).send("Admin Registered Successfully.");
+  } catch (err) {
+    res.status(400).send("Error: " + err);
+  }
+};
+
+module.exports = { register, login, logout, adminRegister };
