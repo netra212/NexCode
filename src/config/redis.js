@@ -1,4 +1,4 @@
-const createClient = require("redis");
+const { createClient } = require("redis");
 
 const redisClient = createClient({
   username: "default",
