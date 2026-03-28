@@ -4,3 +4,5 @@ const submitCode = require("../Controllers/submitCode");
 const submitRouter = express.Router();
 
 submitRouter.post("/submit/:id", userMiddleware, submitCode);
+
+modul.exports = submitRouter;
