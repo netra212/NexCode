@@ -50,15 +50,22 @@ NexCode is a full-stack coding platform inspired by LeetCode, built using the ME
 
 NEXCODE/
 │
-├── node_modules/
-├── src/
-│ ├── config/
+├── node_modules
+
+├── src
+
+│ ├── config
+
 │ │ ├── db.js # MongoDB connection
+
 │ │ └── redis.js # Redis setup
 │ │
 │ ├── Controllers/
+
 │ │ ├── submitCode.js # Handles code submissions
+
 │ │ ├── userAuthenticate.js
+
 │ │ └── userProblem.js # Problem-related logic
 │ │
 │ ├── middleware/
