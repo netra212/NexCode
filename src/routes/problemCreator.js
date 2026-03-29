@@ -6,6 +6,7 @@ const {
   deleteProblem,
   getProblemById,
   getAllProblem,
+  getAllSolvedProblemByUser,
 } = require("../Controllers/userProblem");
 const userMiddleware = require("../middleware/userMiddleware");
 const problemRouter = express.Router();
