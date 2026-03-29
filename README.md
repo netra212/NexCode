@@ -48,24 +48,18 @@ NexCode is a full-stack coding platform inspired by LeetCode, built using the ME
 
 📁 Project Structure
 
+```
 NEXCODE/
 │
-├── node_modules
-
-├── src
-
-│ ├── config
-
+├── node_modules/
+├── src/
+│ ├── config/
 │ │ ├── db.js # MongoDB connection
-
 │ │ └── redis.js # Redis setup
 │ │
 │ ├── Controllers/
-
 │ │ ├── submitCode.js # Handles code submissions
-
 │ │ ├── userAuthenticate.js
-
 │ │ └── userProblem.js # Problem-related logic
 │ │
 │ ├── middleware/
@@ -95,6 +89,7 @@ NEXCODE/
 ├── package.json
 ├── package-lock.json
 └── Note.txt
+```
 
 ---
 
@@ -103,6 +98,7 @@ NEXCODE/
 ### 1. Clone the repository
 
 ```
+
 git clone https://github.com/your-username/nexcode.git
 cd nexcode
 
@@ -111,7 +107,9 @@ cd nexcode
 2. Install dependencies
 
 ```
-   npm install
+
+npm install
+
 ```
 
 3. Setup environment variables
@@ -119,14 +117,22 @@ cd nexcode
 Create a `.env` file in the root directory:
 
 ```
+
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
 REDIS_URL=your_redis_url
+
 ```
 
 4. Run the server
 
 ```
+
 npm start
+
+```
+
+```
+
 ```
