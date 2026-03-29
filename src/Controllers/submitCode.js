@@ -44,7 +44,7 @@ const submitCode = async (req, res) => {
     const resultToken = submitResult.map((value) => value.token);
     const testResult = await submitToken(resultToken);
 
-    // submitted Result ko update garna paryo now.
+    // Updating submittedResult
     let testCasesPassed = 0;
     let runtime = 0;
     let memory = 0;
@@ -75,6 +75,12 @@ const submitCode = async (req, res) => {
     submittedResult.memory = memory;
 
     await submittedResult.save();
+
+    // Inserting the Problem Id into the user Schema ko problem solved ma if it is not present there.
+    if (!req.result.problemSolved.includes(problemId)) {
+      req.result.problemSolved.push(problemId);
+      await req.result.save();
+    }
 
     res.status(201).send(submittedResult);
   } catch (err) {
