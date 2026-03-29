@@ -25,24 +25,15 @@ NexCode is a full-stack coding platform inspired by LeetCode, built using the ME
 
 ## 🏗️ Tech Stack
 
-**Frontend:**
+| Layer    | Technology          |
+| -------- | ------------------- |
+| Frontend | React.js (Planned)  |
+| Backend  | Node.js, Express.js |
+| Database | MongoDB (Mongoose)  |
+| Cache    | Redis               |
+| Auth     | JWT                 |
 
-- React.js (if implemented / planned)
-
-**Backend:**
-
-- Node.js
-- Express.js
-
-**Database:**
-
-- MongoDB (Mongoose)
-
-**Other Tools:**
-
-- Redis (for caching)
-- JWT (Authentication)
-- REST APIs
+---
 
 ---
 
