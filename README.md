@@ -46,20 +46,20 @@ NexCode is a full-stack coding platform inspired by LeetCode, built using the ME
 
 ---
 
-## 📁 Project Structure
+📁 Project Structure
 
 NEXCODE/
 │
 ├── node_modules/
 ├── src/
 │ ├── config/
-│ │ ├── db.js
-│ │ └── redis.js
+│ │ ├── db.js # MongoDB connection
+│ │ └── redis.js # Redis setup
 │ │
 │ ├── Controllers/
-│ │ ├── submitCode.js
+│ │ ├── submitCode.js # Handles code submissions
 │ │ ├── userAuthenticate.js
-│ │ └── userProblem.js
+│ │ └── userProblem.js # Problem-related logic
 │ │
 │ ├── middleware/
 │ │ ├── adminMiddleware.js
@@ -71,7 +71,7 @@ NEXCODE/
 │ │ └── user.js
 │ │
 │ ├── routes/
-│ │ ├── problemCreator.js
+│ │ ├── problemCreator.js # Admin routes
 │ │ ├── submit.js
 │ │ └── userAuth.js
 │ │
