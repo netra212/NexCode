@@ -20,7 +20,7 @@ const submissionSchema = new Schema(
     language: {
       type: String,
       required: true,
-      enum: ["javascript", "cpp", "java"],
+      enum: ["javascript", "c++", "java"],
     },
     status: {
       type: String,
@@ -53,5 +53,9 @@ const submissionSchema = new Schema(
   },
 );
 
+// Creating a Compond Index with userId and ProblemId.
+submissionSchema.index({ userId: 1, problemId: 1 });
+
 const Submission = mongoose.model("submission", submissionSchema);
+
 module.exports = Submission;
