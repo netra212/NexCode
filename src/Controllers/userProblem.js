@@ -56,7 +56,6 @@ const CreateProblem = async (req, res) => {
   }
 };
 
-//Updating Problems.
 const UpdateProblem = async (req, res) => {
   const { id } = req.params;
   try {
@@ -166,8 +165,12 @@ const getAllProblem = async (req, res) => {
 
 const getAllSolvedProblemByUser = async (req, res) => {
   try {
-    const count = req.result.problemSolved.length;
-    res.status(200).send(count);
+    const userId = req.result._id;
+    const user = await User.findById(userId).populate({
+      path: "problemSolved",
+      select: "_id title difficulty tags",
+    });
+    res.status(200).send(user.problemSolved);
   } catch (err) {
     res.status(500).send("Server Error");
   }
