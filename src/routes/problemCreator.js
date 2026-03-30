@@ -23,6 +23,7 @@ problemRouter.delete("/delete/:id", adminMiddleware, deleteProblem);
 // Fetch: fetching all problem.,
 problemRouter.get("/problemByiD/:id", userMiddleware, getProblemById);
 problemRouter.get("/getAllProblem", userMiddleware, getAllProblem);
+problemRouter.get("/submittedProblem/:pid", userMiddleware, submittedProblem);
 
 // problem solved.
 problemRouter.get(
