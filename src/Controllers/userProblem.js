@@ -200,4 +200,5 @@ module.exports = {
   getProblemById,
   getAllProblem,
   getAllSolvedProblemByUser,
+  submittedProblem,
 };

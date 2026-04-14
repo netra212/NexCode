@@ -30,8 +30,17 @@ const register = async (req, res) => {
       },
     );
 
+    const reply = {
+      firstName: user.firstName,
+      emailId: user.emailId,
+      _id: user._id,
+    };
+
     res.cookie("token", token, { maxAge: 60 * 60 * 1000 });
-    res.status(201).send("User Registered Successfully.");
+    res.status(201).json({
+      user: reply,
+      message: "Register Sucessfully.",
+    });
   } catch (err) {
     res.status(400).send("Error: " + err);
   }
@@ -56,6 +65,12 @@ const login = async (req, res) => {
       throw new Error("Invalid Credentials");
     }
 
+    const reply = {
+      firstName: user.firstName,
+      emailId: user.emailId,
+      _id: user._id,
+    };
+
     const token = jwt.sign(
       { _id: user._id, emailId: emailId, role: user.role },
       process.env.JWT_KEY,
@@ -64,7 +79,10 @@ const login = async (req, res) => {
       },
     );
     res.cookie("token", token, { maxAge: 60 * 60 * 1000 });
-    res.status(200).send("Logged In Successfully.");
+    res.status(200).json({
+      user: reply,
+      message: "Login Successfully",
+    });
   } catch (err) {
     res.status(401).send("Error: " + err);
   }
